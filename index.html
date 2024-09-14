@@ -11,15 +11,51 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            overflow: hidden; /* Prevent scrollbars */
         }
+
         body {
             display: flex;
             flex-direction: column;
+            background: #f4f4f4;
+            position: relative;
+            color: #333;
         }
+
+        /* Animated Floating Circles */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0.5;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-50px) scale(1.2);
+            }
+            100% {
+                transform: translateY(0) scale(1);
+            }
+        }
+
         header {
-            background-color: #282c34;
+            background-color: rgba(133, 161, 255, 0.8); /* Slightly transparent */
             color: white;
             padding: 1em;
             position: sticky;
@@ -27,6 +63,7 @@
             z-index: 1000;
             text-align: center;
         }
+
         .container {
             flex: 1;
             max-width: 1200px;
@@ -34,12 +71,15 @@
             padding: 2em;
             display: flex;
             justify-content: space-between;
+            position: relative;
         }
+
         .content {
             flex: 1;
         }
+
         .project {
-            background: white;
+            background: #fef9f3; /* Pastel beige */
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin: 1em 0;
@@ -47,30 +87,37 @@
             text-align: left;
             transition: transform 0.3s, box-shadow 0.3s;
         }
+
         .project:hover {
             transform: translateY(-5px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
+
         .project h2 {
             margin-top: 0;
         }
+
         .project a {
             text-decoration: none;
             color: #1e90ff;
         }
+
         .project a:hover {
             text-decoration: underline;
         }
+
         .sidebar {
             width: 200px; /* Adjust as needed */
             margin-left: 2em;
         }
+
         .sidebar img {
             width: 300%;
             border-radius: 8px;
         }
+
         footer {
-            background-color: #282c34;
+            background-color: rgba(250, 204, 117, 0.8); /* Slightly transparent */
             color: white;
             padding: 1em;
             text-align: center;
@@ -82,6 +129,15 @@
     </style>
 </head>
 <body>
+    <div class="background">
+        <!-- Floating Circles -->
+        <div class="circle" style="width: 100px; height: 100px; top: 10%; left: 10%; background: rgba(255, 182, 193, 0.5);"></div>
+        <div class="circle" style="width: 150px; height: 150px; top: 30%; left: 50%; background: rgba(173, 216, 230, 0.5);"></div>
+        <div class="circle" style="width: 200px; height: 200px; top: 60%; left: 20%; background: rgba(144, 238, 144, 0.5);"></div>
+        <div class="circle" style="width: 120px; height: 120px; top: 70%; left: 70%; background: rgba(255, 255, 224, 0.5);"></div>
+        <div class="circle" style="width: 180px; height: 180px; top: 40%; left: 80%; background: rgba(255, 224, 178, 0.5);"></div>
+    </div>
+
     <header>
         <h1>Jake</h1>
         <p>Welcome to the central hub for my GitHub projects. Browse through the links below to explore different repositories and their details.</p>
@@ -97,19 +153,19 @@
             
             <!-- Project 2 -->
             <div class="project">
-                <h2><a href="https://lordmozart.github.io/Ari/" target="_blank">Ari's wallpaper</h2>
+                <h2><a href="https://lordmozart.github.io/Ari/" target="_blank">Ari's wallpaper</a></h2>
                 <p>A very cool wallpaper for Ari's Birthday...</p>
             </div>
             <!-- Project 3 -->
             <div class="project">
-                <h2><a href="https://lordmozart.github.io/dance/" target="_blank">Dancing Banana</h2>
+                <h2><a href="https://lordmozart.github.io/dance/" target="_blank">Dancing Banana</a></h2>
                 <p>The banana knows all...</p>
             </div>
             
             <!-- Add more projects as needed -->
         </div>
         <div class="sidebar">
-            <img src="side-image.jpg" alt="Side Image"> <!-- Replace with your image -->
+            <img src="side-image.jpg" alt="Side Image">
         </div>
     </div>
 
