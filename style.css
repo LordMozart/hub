@@ -1,0 +1,147 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background: #1c1c1c; /* Dark background color */
+    position: relative;
+    color: #fff; /* Light text color for contrast */
+}
+
+/* Animated Floating Circles */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4); /* Lighter circles */
+    opacity: 0.5;
+    animation: float 20s infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-50px) scale(1.2);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+header {
+    background-color: rgba(133, 161, 255, 0.8); /* Slightly transparent */
+    color: white;
+    padding: 1em;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+    padding-right: 220px; /* Adjust padding to make space for sidebar */
+}
+
+.content {
+    flex: 1;
+}
+
+.project {
+    background: #fef9f3; /* Pastel beige */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 1em 0;
+    padding: 1em;
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.project h2 {
+    margin-top: 0;
+}
+
+.project a {
+    text-decoration: none;
+    color: #1e90ff;
+}
+
+.project a:hover {
+    text-decoration: underline;
+}
+
+.project p {
+    color: #333; /* Dark grey color for descriptions */
+}
+
+.sidebar {
+    width: 200px; /* Adjust as needed */
+    background: #333; /* Dark background for sidebar */
+    padding: 1em;
+    color: #fff; /* Light text color for contrast */
+    position: fixed; /* Fixed position for floating effect */
+    top: 20px; /* Adjust top position if needed */
+    right: 20px; /* Adjust right position if needed */
+    border-radius: 12px; /* Rounded corners */
+    z-index: 1000; /* Ensure it's on top of other content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Optional shadow for floating effect */
+    overflow-y: auto; /* Scroll if content overflows */
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+.sidebar nav a {
+    text-decoration: none;
+    color: #fff;
+    background: #444; /* Slightly lighter background for tabs */
+    padding: 0.5em;
+    border-radius: 4px;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.sidebar nav a:hover {
+    background: #555; /* Slightly darker background on hover */
+}
+
+.footer {
+    background-color: rgba(250, 204, 117, 0.8); /* Slightly transparent */
+    color: white;
+    padding: 1em;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
