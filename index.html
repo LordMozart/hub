@@ -58,6 +58,9 @@
             padding: 1em;
             text-align: left;
             transition: transform 0.3s, box-shadow 0.3s;
+            float: left; /* Align projects to the left */
+            width: calc(33% - 100px); /* Make sure the width accounts for the 100px gap */
+            margin-right: 100px; /* Add 100px gap between projects */
         }
 
         .project:hover {
@@ -156,6 +159,11 @@
             .content {
                 margin-right: 0; /* Remove margin for mobile */
                 margin-bottom: 1em;
+            }
+
+            .project {
+                width: 100%; /* Full width on mobile */
+                margin-right: 0; /* Remove margin for mobile */
             }
 
             .sidebar {
