@@ -170,13 +170,14 @@
 
         .fixed-left-image {
             position: fixed;
-            left: -50px; /* Move image more to the left */
+            left: 0; /* Set the left edge of the image to the left edge of the viewport */
             top: 150px; /* Adjust based on where you want it relative to the header */
             width: 150%; /* Resize image to 150% of its original size */
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             background: transparent; /* Ensure no background */
+            transform: translateX(-25%); /* Center image relative to the left edge of the viewport */
         }
     </style>
 </head>
