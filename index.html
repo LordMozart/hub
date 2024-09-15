@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jake</title>
-    <link rel="icon" type="image/x-icon" href="logo.jpg"> <!-- Replace with your icon -->
+    <link rel="icon" type="image/x-icon" href="logo.jpg">
     <link rel="stylesheet" href="styles.css">
     <style>
         html, body {
@@ -12,51 +12,18 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            overflow: hidden; /* Prevent scrollbars */
+            overflow: hidden;
         }
 
         body {
             display: flex;
             flex-direction: column;
-            background: #1c1c1c; /* Dark background color */
-            position: relative;
-            color: #fff; /* Light text color for contrast */
-        }
-
-        /* Animated Floating Circles */
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4); /* Lighter circles */
-            opacity: 0.5;
-            animation: float 20s infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) scale(1);
-            }
-            50% {
-                transform: translateY(-50px) scale(1.2);
-            }
-            100% {
-                transform: translateY(0) scale(1);
-            }
+            background: #1c1c1c;
+            color: #fff;
         }
 
         header {
-            background-color: rgba(133, 161, 255, 0.8); /* Slightly transparent */
+            background-color: rgba(133, 161, 255, 0.8);
             color: white;
             padding: 1em;
             position: sticky;
@@ -71,22 +38,20 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 2em;
-            position: relative; /* Ensures sidebar is positioned relative to this container */
         }
 
         .content {
             flex: 1;
-            margin-right: 220px; /* Adjust margin to make space for the sidebar */
+            margin-right: 220px;
         }
 
         .project {
-            background: #fef9f3; /* Pastel beige */
+            background: #fef9f3;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             margin: 1em 0;
             padding: 1em;
             text-align: left;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .project:hover {
@@ -94,41 +59,16 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .project h2 {
-            margin-top: 0;
-        }
-
-        .project a {
-            text-decoration: none;
-            color: #1e90ff;
-        }
-
-        .project a:hover {
-            text-decoration: underline;
-        }
-
-        .project p {
-            color: #333; /* Dark grey color for descriptions */
-        }
-
         .sidebar {
-            width: 200px; /* Adjust width as needed */
-            background: #333; /* Dark background for sidebar */
+            width: 200px;
+            background: #333;
             padding: 1em;
-            color: #fff; /* Light text color for contrast */
-            position: fixed; /* Fixed position for sticky sidebar */
+            color: #fff;
+            position: fixed;
             right: 0;
             top: 0;
             height: 100%;
-            overflow-y: auto; /* Scroll if content overflows */
-            border-radius: 8px; /* Rounded corners */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow to stand out */
-            z-index: 1100; /* Ensure it is above other content */
-        }
-
-        .sidebar img {
-            width: 100%;
-            border-radius: 8px;
+            overflow-y: auto;
         }
 
         .sidebar nav {
@@ -140,84 +80,126 @@
         .sidebar nav a {
             text-decoration: none;
             color: #fff;
-            background: #444; /* Slightly lighter background for tabs */
+            background: #444;
             padding: 0.5em;
             border-radius: 4px;
             margin-bottom: 0.5em;
             text-align: center;
+            cursor: pointer;
         }
 
-        .sidebar nav a:hover {
-            background: #555; /* Slightly darker background on hover */
+        .sidebar nav a.active {
+            background: #555;
         }
 
-        footer {
-            background-color: rgba(250, 204, 117, 0.8); /* Slightly transparent */
-            color: white;
-            padding: 1em;
-            text-align: center;
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-            left: 0;
+        .tab-content {
+            margin-top: 1em;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        .bonnie-pics img {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            border-radius: 8px;
+            object-fit: cover;
         }
     </style>
 </head>
 <body>
-    <div class="background">
-        <!-- Floating Circles -->
-        <div class="circle" style="width: 100px; height: 100px; top: 10%; left: 10%; background: rgba(255, 182, 193, 0.4);"></div>
-        <div class="circle" style="width: 150px; height: 150px; top: 30%; left: 50%; background: rgba(173, 216, 230, 0.4);"></div>
-        <div class="circle" style="width: 200px; height: 200px; top: 60%; left: 20%; background: rgba(144, 238, 144, 0.4);"></div>
-        <div class="circle" style="width: 120px; height: 120px; top: 70%; left: 70%; background: rgba(255, 255, 224, 0.4);"></div>
-        <div class="circle" style="width: 180px; height: 180px; top: 40%; left: 80%; background: rgba(255, 224, 178, 0.4);"></div>
-    </div>
-
     <header>
         <h1>Jake</h1>
-        <p>Welcome to the central hub for my GitHub projects. Browse through the links below to explore different repositories and their details.</p>
+        <p>Welcome to the central hub for my GitHub projects. Browse through the tabs to explore more content.</p>
     </header>
     
     <div class="container">
         <div class="content">
-            <!-- Project 1 -->
-            <div class="project">
-                <h2><a href="https://lordmozart.github.io/Wallpaper/" target="_blank">Wallpaper</a></h2>
-                <p>Simple wallpaper with particle effects</p>
+            <div class="tab-content">
+                <!-- Tab 1: Home -->
+                <div id="tab1" class="tab-pane active">
+                    <h2>Home</h2>
+                    <div class="project">
+                        <h2><a href="https://lordmozart.github.io/Wallpaper/" target="_blank">Wallpaper</a></h2>
+                        <p>Simple wallpaper with particle effects</p>
+                    </div>
+                    <div class="project">
+                        <h2><a href="https://lordmozart.github.io/flappytorture/" target="_blank">Flappy bird</a></h2>
+                        <p>Flappy bird one liner by gullyn</p>
+                    </div>
+                    <div class="project">
+                        <h2><a href="https://lordmozart.github.io/dance/" target="_blank">Dancing Banana</a></h2>
+                        <p>The banana knows all...</p>
+                    </div>
+                    <div class="project">
+                        <h2><a href="https://lordmozart.github.io/countdown/" target="_blank">Countdown clock</a></h2>
+                        <p>Original countdown script</p>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Bonnie Pics -->
+                <div id="tab2" class="tab-pane">
+                    <h2>Bonnie Pics</h2>
+                    <div class="bonnie-pics">
+                        <img src="bonnie1.jpg" alt="Bonnie Pic 1">
+                        <img src="bonnie2.jpg" alt="Bonnie Pic 2">
+                        <img src="bonnie3.jpg" alt="Bonnie Pic 3">
+                        <img src="bonnie4.jpg" alt="Bonnie Pic 4">
+                        <img src="bonnie5.jpg" alt="Bonnie Pic 5">
+                    </div>
+                </div>
+
+                <!-- Tab 3: Info -->
+                <div id="tab3" class="tab-pane">
+                    <h2>Info</h2>
+                    <img src="info-image.jpg" alt="Info Image" style="width: 100%; border-radius: 8px;">
+                    <p>This section contains some detailed information about the project or topic of interest. You can customize this text to fit your needs.</p>
+                </div>
             </div>
-            
-            <!-- Project 2 -->
-            <div class="project">
-                <h2><a href="https://lordmozart.github.io/flappytorture/" target="_blank">Flappy bird</a></h2>
-                <p>Flappy bird one-liner by gullyn</p>
-            </div>
-            <!-- Project 3 -->
-            <div class="project">
-                <h2><a href="https://lordmozart.github.io/dance/" target="_blank">Dancing Banana</a></h2>
-                <p>The banana knows all...</p>
-            </div>
-            <!-- Project 4 -->
-            <div class="project">
-                <h2><a href="https://lordmozart.github.io/countdown/" target="_blank">Countdown clock</a></h2>
-                <p>Original countdown script</p>
-            </div>
-            
-            <!-- Add more projects as needed -->
         </div>
         
         <div class="sidebar">
             <nav>
-                <a href="#tab1">Tab 1</a>
-                <a href="#tab2">Tab 2</a>
-                <a href="#tab3">Tab 3</a>
-                <a href="#tab4">Tab 4</a>
+                <a href="#tab1" class="tab-link" data-tab="tab1">Home</a>
+                <a href="#tab2" class="tab-link" data-tab="tab2">Bonnie Pics</a>
+                <a href="#tab3" class="tab-link" data-tab="tab3">Info</a>
             </nav>
-            <img src="side-image.jpg" alt="Side Image">
         </div>
     </div>
 
     <footer>
         <p>&copy; 2024 Jake | <a href="https://github.com/LordMozart" target="_blank" style="color: #1e90ff;">GitHub Profile</a></p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            
+            function showTab(tabId) {
+                tabLinks.forEach(link => link.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+                
+                document.querySelector(`.tab-link[data-tab="${tabId}"]`).classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            }
+
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+                    showTab(tabId);
+                });
+            });
+
+            showTab('tab1'); // Show 'Home' tab by default
+        });
+    </script>
 </body>
 </html>
