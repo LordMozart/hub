@@ -138,8 +138,8 @@
         }
 
         .bonnie-pics img {
-            width: 100px;
-            height: 100px;
+            width: 300px;
+            height: 300px;
             margin: 5px;
             border-radius: 8px;
             object-fit: cover;
@@ -173,6 +173,14 @@
             height: auto;
             border-radius: 8px;
             background: transparent; /* Ensure no background */
+        }
+
+        .info-image {
+            width: 50%; /* Adjust the size of the image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 8px;
+            display: block; /* Ensure it appears on a new line */
+            margin: 1em auto; /* Center the image and add margin for spacing */
         }
     </style>
 </head>
@@ -222,8 +230,8 @@
                 <!-- Tab 3: Info -->
                 <div id="tab3" class="tab-pane">
                     <h2>Info</h2>
-                    <img src="info-image.jpg" alt="Info Image" style="width: 100%; border-radius: 8px;">
-                    <p>Im a horrible developer with a passion for creating interactive/awful web experiences. Having no expireance in integrating multimedia elements and advanced visual effects to enhance user engagement. Never exploring new technologies and tools to push the boundaries of web development. I do not care about delivering high-quality, user-centered solutions.</p>
+                    <p>I'm an innovative developer with a passion for creating interactive web experiences. Specializes in integrating multimedia elements and advanced visual effects to enhance user engagement. Always exploring new technologies and tools to push the boundaries of web development. Committed to delivering high-quality, user-centered solutions.</p>
+                    <img src="info-image.jpg" alt="Info Image" class="info-image">
                 </div>
             </div>
         </div>
