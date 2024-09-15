@@ -11,25 +11,36 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif; /* Updated font for a modern feel */
             overflow: hidden;
         }
 
         body {
             display: flex;
             flex-direction: column;
-            background: #1c1c1c;
-            color: #fff;
+            background: #f4f4f9; /* Light grey background for a cleaner look */
+            color: #333; /* Dark grey text for readability */
         }
 
         header {
-            background-color: rgba(133, 161, 255, 0.8);
+            background-color: #4a90e2; /* Professional and inviting blue */
             color: white;
-            padding: 1em;
+            padding: 1.5em; /* More padding for breathing space */
             position: sticky;
             top: 0;
             z-index: 1000;
             text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow for a floating effect */
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            margin: 0;
+        }
+
+        header p {
+            margin-top: 0.5em;
+            font-size: 1.2em;
         }
 
         .container {
@@ -42,26 +53,47 @@
 
         .content {
             flex: 1;
-            margin-right: 220px;
+            margin-right: 240px; /* Adjusted to allow more space for sidebar */
         }
 
         .project {
-            background: #fef9f3;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            margin: 1em 0;
-            padding: 1em;
+            background: #ffffff; /* Clean white background for project cards */
+            border-radius: 12px; /* Softer corners for modern design */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+            margin: 1.5em 0;
+            padding: 1.5em;
             text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .project:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-7px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Stronger hover effect */
+        }
+
+        .project h2 {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        .project p {
+            color: #555; /* Dark grey description for a sleek look */
+            font-size: 1.1em;
+            margin: 0.5em 0 0;
+        }
+
+        .project a {
+            text-decoration: none;
+            color: #1e90ff;
+        }
+
+        .project a:hover {
+            text-decoration: underline;
         }
 
         .sidebar {
-            width: 200px;
-            background: #333;
+            width: 220px;
+            background: #2c3e50; /* Dark, modern blue for sidebar */
             padding: 1em;
             color: #fff;
             position: fixed;
@@ -69,6 +101,7 @@
             top: 0;
             height: 100%;
             overflow-y: auto;
+            box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow on sidebar */
         }
 
         .sidebar nav {
@@ -79,17 +112,22 @@
 
         .sidebar nav a {
             text-decoration: none;
-            color: #fff;
-            background: #444;
-            padding: 0.5em;
-            border-radius: 4px;
-            margin-bottom: 0.5em;
+            color: #ecf0f1;
+            background: #34495e; /* Lighter blue-grey background for tabs */
+            padding: 1em;
+            border-radius: 8px;
+            margin-bottom: 0.8em;
             text-align: center;
-            cursor: pointer;
+            font-size: 1.1em;
+            transition: background 0.3s;
+        }
+
+        .sidebar nav a:hover {
+            background: #2c3e50; /* Darker background on hover */
         }
 
         .sidebar nav a.active {
-            background: #555;
+            background: #1abc9c; /* Highlighted active tab */
         }
 
         .tab-content {
@@ -105,11 +143,30 @@
         }
 
         .bonnie-pics img {
-            width: 100px;
-            height: 100px;
-            margin: 5px;
-            border-radius: 8px;
+            width: 120px;
+            height: 120px;
+            margin: 8px;
+            border-radius: 12px;
             object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for images */
+        }
+
+        footer {
+            background-color: #4a90e2;
+            color: white;
+            padding: 1em;
+            text-align: center;
+            margin-top: auto;
+            font-size: 1em;
+        }
+
+        footer a {
+            color: #f1c40f;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -174,7 +231,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 Jake | <a href="https://github.com/LordMozart" target="_blank" style="color: #1e90ff;">GitHub Profile</a></p>
+        <p>&copy; 2024 Jake | <a href="https://github.com/LordMozart" target="_blank">GitHub Profile</a></p>
     </footer>
 
     <script>
