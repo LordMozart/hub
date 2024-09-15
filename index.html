@@ -65,17 +65,16 @@
         }
 
         .container {
+            display: flex;
             flex: 1;
             max-width: 1200px;
             margin: 0 auto;
             padding: 2em;
-            display: flex;
-            justify-content: space-between;
-            position: relative;
         }
 
         .content {
             flex: 1;
+            margin-right: 220px; /* Adjust margin to make space for sidebar */
         }
 
         .project {
@@ -112,12 +111,39 @@
 
         .sidebar {
             width: 200px; /* Adjust as needed */
-            margin-left: 2em;
+            background: #333; /* Dark background for sidebar */
+            padding: 1em;
+            color: #fff; /* Light text color for contrast */
+            position: fixed; /* Fixed position for sticky sidebar */
+            right: 0;
+            top: 0;
+            height: 100%;
+            overflow-y: auto; /* Scroll if content overflows */
         }
 
         .sidebar img {
-            width: 400%;
+            width: 100%;
             border-radius: 8px;
+        }
+
+        .sidebar nav {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1em;
+        }
+
+        .sidebar nav a {
+            text-decoration: none;
+            color: #fff;
+            background: #444; /* Slightly lighter background for tabs */
+            padding: 0.5em;
+            border-radius: 4px;
+            margin-bottom: 0.5em;
+            text-align: center;
+        }
+
+        .sidebar nav a:hover {
+            background: #555; /* Slightly darker background on hover */
         }
 
         footer {
@@ -165,15 +191,22 @@
                 <h2><a href="https://lordmozart.github.io/dance/" target="_blank">Dancing Banana</a></h2>
                 <p>The banana knows all...</p>
             </div>
-                    <!-- Project 4 -->
+            <!-- Project 4 -->
             <div class="project">
                 <h2><a href="https://lordmozart.github.io/countdown/" target="_blank">Countdown clock</a></h2>
-                <p>origninal countdown script</p>
+                <p>Original countdown script</p>
             </div>
             
             <!-- Add more projects as needed -->
         </div>
+        
         <div class="sidebar">
+            <nav>
+                <a href="#tab1">Tab 1</a>
+                <a href="#tab2">Tab 2</a>
+                <a href="#tab3">Tab 3</a>
+                <a href="#tab4">Tab 4</a>
+            </nav>
             <img src="side-image.jpg" alt="Side Image">
         </div>
     </div>
