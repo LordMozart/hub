@@ -58,21 +58,6 @@
             margin-right: 220px;
         }
 
-        .tab-content {
-            margin-top: 1em;
-        }
-
-        .tab-pane {
-            display: none;
-            padding-left: 200px; /* Move elements inside the home tab to the right by 200px */
-            transform: scale(0.9); /* Zoom out by 10% */
-            transform-origin: top left; /* Ensure scaling starts from the top left */
-        }
-
-        .tab-pane.active {
-            display: block;
-        }
-
         .project {
             background: #1f1f1f;
             border-radius: 8px;
@@ -140,6 +125,18 @@
             background: #1e90ff;
         }
 
+        .tab-content {
+            margin-top: 1em;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
         .bonnie-pics img {
             width: 100px;
             height: 100px;
@@ -170,14 +167,14 @@
 
         .fixed-left-image {
             position: fixed;
-            left: 0; /* Set the left edge of the image to the left edge of the viewport */
+            left: 0; /* Align to the left edge of the viewport */
             top: 150px; /* Adjust based on where you want it relative to the header */
             width: 150%; /* Resize image to 150% of its original size */
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             background: transparent; /* Ensure no background */
-            transform: translateX(-25%); /* Center image relative to the left edge of the viewport */
+            transform: translateX(-50%); /* Move the image more to the left */
         }
     </style>
 </head>
@@ -193,7 +190,7 @@
                 <!-- Tab 1: Home -->
                 <div id="tab1" class="tab-pane active">
                     <h2>Home</h2>
-                    <img src="side-image.jpg" alt="Fixed Image" class="fixed-left-image">
+                    <img src="side-image.jpg" alt="Side Image" class="fixed-left-image">
                     <div class="project">
                         <h2><a href="https://lordmozart.github.io/Wallpaper/" target="_blank">Wallpaper</a></h2>
                         <p>Simple wallpaper with particle effects</p>
