@@ -20,9 +20,6 @@
         body {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
         }
 
         header {
@@ -33,7 +30,6 @@
             top: 0;
             z-index: 1000;
             text-align: center;
-            width: 100%;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow for a polished look */
         }
 
@@ -50,11 +46,15 @@
 
         .container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex: 1;
             max-width: 1200px;
+            margin: 0 auto;
             padding: 2em;
-            text-align: center;
+        }
+
+        .content {
+            flex: 1;
+            margin-right: 220px;
         }
 
         .project {
@@ -63,7 +63,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             margin: 1em 0;
             padding: 1em;
-            width: 80%;
+            text-align: left;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
@@ -86,7 +86,6 @@
             color: #bbb; /* Dark grey description text */
         }
 
-        /* Sidebar remains the same */
         .sidebar {
             width: 220px;
             background: #232323;
@@ -125,18 +124,6 @@
             background: #1e90ff;
         }
 
-        .fixed-image {
-            position: fixed;
-            right: 10px;
-            bottom: 20px;
-            width: 150px;
-            height: auto;
-            z-index: 1000;
-            border-radius: 10px;
-            object-fit: cover;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-        }
-
         .tab-content {
             margin-top: 1em;
         }
@@ -147,6 +134,15 @@
 
         .tab-pane.active {
             display: block;
+        }
+
+        .bonnie-pics img {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid #333;
         }
 
         footer {
@@ -177,32 +173,50 @@
     </header>
     
     <div class="container">
-        <div class="tab-content">
-            <!-- Tab 1: Home -->
-            <div id="tab1" class="tab-pane active">
-                <h2>Home</h2>
-                <div class="project">
-                    <h2><a href="https://lordmozart.github.io/Wallpaper/" target="_blank">Wallpaper</a></h2>
-                    <p>Simple wallpaper with particle effects</p>
+        <div class="content">
+            <div class="tab-content">
+                <!-- Tab 1: Home -->
+                <div id="tab1" class="tab-pane active">
+                    <h2>Home</h2>
+                    <div class="project">
+                        <h2><a href="https://lordmozart.github.io/Wallpaper/" target="_blank">Wallpaper</a></h2>
+                        <p>Simple wallpaper with particle effects</p>
+                    </div>
+                    <div class="project">
+                        <h2><a href="https://lordmozart.github.io/flappytorture/" target="_blank">Flappy bird</a></h2>
+                        <p>Flappy bird one liner by gullyn</p>
+                    </div>
+                    <div class="project">
+                        <h2><a href="https://lordmozart.github.io/dance/" target="_blank">Dancing Banana</a></h2>
+                        <p>The banana knows all...</p>
+                    </div>
+                    <div class="project">
+                        <h2><a href="https://lordmozart.github.io/countdown/" target="_blank">Countdown clock</a></h2>
+                        <p>Original countdown script</p>
+                    </div>
                 </div>
-                <div class="project">
-                    <h2><a href="https://lordmozart.github.io/flappytorture/" target="_blank">Flappy bird</a></h2>
-                    <p>Flappy bird one liner by gullyn</p>
+
+                <!-- Tab 2: Bonnie Pics -->
+                <div id="tab2" class="tab-pane">
+                    <h2>Bonnie Pics</h2>
+                    <div class="bonnie-pics">
+                        <img src="bonnie1.jpg" alt="Bonnie Pic 1">
+                        <img src="bonnie2.jpg" alt="Bonnie Pic 2">
+                        <img src="bonnie3.jpg" alt="Bonnie Pic 3">
+                        <img src="bonnie4.jpg" alt="Bonnie Pic 4">
+                        <img src="bonnie5.jpg" alt="Bonnie Pic 5">
+                    </div>
                 </div>
-                <div class="project">
-                    <h2><a href="https://lordmozart.github.io/dance/" target="_blank">Dancing Banana</a></h2>
-                    <p>The banana knows all...</p>
-                </div>
-                <div class="project">
-                    <h2><a href="https://lordmozart.github.io/countdown/" target="_blank">Countdown clock</a></h2>
-                    <p>Original countdown script</p>
+
+                <!-- Tab 3: Info -->
+                <div id="tab3" class="tab-pane">
+                    <h2>Info</h2>
+                    <img src="info-image.jpg" alt="Info Image" style="width: 100%; border-radius: 8px;">
+                    <p>This section contains some detailed information about the project or topic of interest. Customize this text as needed.</p>
                 </div>
             </div>
         </div>
-
-        <!-- Add fixed image to follow scroll -->
-        <img src="floating-image.jpg" alt="Fixed Image" class="fixed-image">
-
+        
         <div class="sidebar">
             <nav>
                 <a href="#tab1" class="tab-link" data-tab="tab1">Home</a>
