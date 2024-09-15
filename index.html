@@ -47,15 +47,15 @@
         .container {
             display: flex;
             flex: 1;
-            max-width: 1200px;
             margin: 0 auto;
             padding: 2em;
             position: relative; /* Needed for positioning of absolute image */
+            flex-direction: column;
         }
 
         .content {
-            flex: 1;
-            margin-right: 220px;
+            margin-right: 0; /* Remove margin for mobile */
+            padding-right: 0; /* Remove padding for mobile */
         }
 
         .project {
@@ -100,6 +100,15 @@
             z-index: 1100;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.nav-open {
+            transform: translateX(0);
+        }
+
+        .sidebar.nav-closed {
+            transform: translateX(100%);
         }
 
         .sidebar nav {
@@ -138,8 +147,8 @@
         }
 
         .bonnie-pics img {
-            width: 300px;
-            height: 300px;
+            width: 100%;
+            height: auto;
             margin: 5px;
             border-radius: 8px;
             object-fit: cover;
@@ -151,8 +160,7 @@
             color: white;
             padding: 1em;
             text-align: center;
-            position: absolute;
-            bottom: 0;
+            position: relative;
             width: 100%;
         }
 
@@ -176,11 +184,43 @@
         }
 
         .info-image {
-            width: 50%; /* Adjust the size of the image */
+            width: 100%; /* Adjust the size of the image for mobile */
             height: auto; /* Maintain aspect ratio */
             border-radius: 8px;
             display: block; /* Ensure it appears on a new line */
             margin: 1em auto; /* Center the image and add margin for spacing */
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+                box-shadow: none;
+                transform: translateX(100%);
+            }
+
+            .sidebar.nav-open {
+                transform: translateX(0);
+            }
+
+            .sidebar.nav-closed {
+                transform: translateX(100%);
+            }
+
+            .container {
+                padding: 1em;
+            }
+
+            .content {
+                margin-right: 0; /* Remove margin for mobile */
+                padding-right: 0; /* Remove padding for mobile */
+            }
+
+            .bonnie-pics img {
+                width: 100%; /* Make images responsive */
+            }
         }
     </style>
 </head>
@@ -236,7 +276,7 @@
             </div>
         </div>
         
-        <div class="sidebar">
+        <div class="sidebar nav-closed">
             <nav>
                 <a href="#tab1" class="tab-link" data-tab="tab1">Home</a>
                 <a href="#tab2" class="tab-link" data-tab="tab2">Bonnie Pics</a>
@@ -253,6 +293,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const tabLinks = document.querySelectorAll('.tab-link');
             const tabPanes = document.querySelectorAll('.tab-pane');
+            const sidebar = document.querySelector('.sidebar');
             
             function showTab(tabId) {
                 tabLinks.forEach(link => link.classList.remove('active'));
@@ -271,6 +312,19 @@
             });
 
             showTab('tab1'); // Show 'Home' tab by default
+            
+            // Toggle sidebar on mobile
+            const toggleSidebar = () => {
+                if (sidebar.classList.contains('nav-closed')) {
+                    sidebar.classList.remove('nav-closed');
+                    sidebar.classList.add('nav-open');
+                } else {
+                    sidebar.classList.remove('nav-open');
+                    sidebar.classList.add('nav-closed');
+                }
+            };
+            
+            document.querySelector('.menu-toggle').addEventListener('click', toggleSidebar);
         });
     </script>
 </body>
