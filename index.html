@@ -138,8 +138,8 @@
         }
 
         .bonnie-pics img {
-            width: 100%;
-            height: auto;
+            width: 300px;
+            height: 300px;
             margin: 5px;
             border-radius: 8px;
             object-fit: cover;
@@ -175,7 +175,7 @@
         }
 
         .info-image {
-            width: 100%; /* Adjust the size of the image for mobile */
+            width: 50%; /* Adjust the size of the image */
             height: auto; /* Maintain aspect ratio */
             border-radius: 8px;
             display: block; /* Ensure it appears on a new line */
@@ -186,10 +186,12 @@
         @media (max-width: 768px) {
             .container {
                 padding: 1em;
+                flex-direction: column;
             }
 
             .content {
                 margin-right: 0; /* Remove margin for mobile */
+                margin-bottom: 1em;
             }
 
             .sidebar {
@@ -201,6 +203,11 @@
 
             .bonnie-pics img {
                 width: 100%; /* Make images responsive */
+                height: auto;
+            }
+
+            .info-image {
+                width: 100%; /* Adjust the size of the image for mobile */
             }
         }
     </style>
