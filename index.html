@@ -3,294 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flappy Bird</title>
+    <title>Jake</title>
+    <link rel="icon" type="image/x-icon" href="logo.jpg">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
+        html, body {
+            height: 100%;
             margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
-            background-color: #70c5ce;
-            user-select: none;  /* Prevent text selection */
+            background-color: #121212; /* Dark background */
+            color: #e0e0e0; /* Light grey text */
         }
-        canvas {
-            display: block;
-            margin: auto;
-            background-color: #fff;
-        }
-        #startScreen {
+        body {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
+            flex-direction: column;
+        }
+        header {
+            background-color: #1f1f1f;
+            color: #fff;
+            padding: 1em;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.5);
-            user-select: none;  /* Prevent text selection */
+            z-index: 1000;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow for a polished look */
         }
-        #startButton {
-            padding: 10px 20px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 20px;
-            cursor: pointer;
-            user-select: none;  /* Prevent text selection */
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
         }
-        #score, #highScore {
-            position: absolute;
-            font-size: 24px;
+        .container {
+            display: flex;
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2em;
+            position: relative; /* Needed for positioning of absolute image */
+        }
+        .content {
+            flex: 1;
+            margin-right: 220px;
+        }
+        .project {
+            background: #1f1f1f;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin: 1em 0;
+            padding: 1em;
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+        }
+        .project h2 a {
+            text-decoration: none;
+            color: #1e90ff;
+            font-weight: bold;
+        }
+        .project a:hover {
+            text-decoration: underline;
+        }
+        .project p {
+            color: #bbb; /* Dark grey description text */
+        }
+        .sidebar {
+            width: 220px;
+            background: #232323;
+            padding: 1em;
             color: #fff;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 5px;
-            user-select: none;  /* Prevent text selection */
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100%;
+            overflow-y: auto;
+            z-index: 1100;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
         }
-        #score {
-            bottom: 50px; /* Space for mobile button */
-            left: 20px;
+        .sidebar nav {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1em;
         }
-        #highScore {
-            bottom: 10px; /* Ensure it's not overlapping with mobile button */
-            left: 20px;
-        }
-        #title {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 32px;
+        .sidebar nav a {
+            text-decoration: none;
             color: #fff;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 5px;
-            display: block; /* Show title initially */
-            user-select: none;  /* Prevent text selection */
-        }
-        #mobileModeButton {
-            position: absolute;
-            bottom: 20px; /* Positioned above the score area */
-            right: 20px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
+            background: #444;
+            padding: 0.75em;
+            border-radius: 6px;
+            margin-bottom: 0.5em;
+            text-align: center;
             cursor: pointer;
+            font-weight: bold;
+        }
+        .sidebar nav a:hover,
+        .sidebar nav a.active {
+            background: #1e90ff;
+        }
+        .tab-content {
+            margin-top: 1em;
+        }
+        .tab-pane {
+            display: none;
+        }
+        .tab-pane.active {
+            display: block;
+        }
+        /* Bonnie Pics Styling */
+        .bonnie-pics {
+            display: flex;
+            flex-wrap: wrap;
+            max-height: 80vh; /* Set maximum height for the container */
+            overflow-y: auto; /* Enable vertical scrolling if content exceeds the height */
+        }
+        .bonnie-pics img {
+            width: 300px;
+            height: 300px;
+            margin: 5px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid #333;
+        }
+        .fixed-left-image {
+            position: absolute;
+            left: -100%; /* Move the image further to the left */
+            top: 150px; /* Adjust based on where you want it relative to the header */
+            width: 100%; /* Resize image to 100% of its original size */
+            height: auto;
+            border-radius: 8px;
+            background: transparent; /* Ensure no background */
+        }
+        .info-image {
+            width: 50%; /* Adjust the size of the image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 8px;
+            display: block; /* Ensure it appears on a new line */
+            margin: 1em auto; /* Center the image and add margin for spacing */
         }
     </style>
 </head>
 <body>
-    <div id="startScreen">
-        <button id="startButton">Start Game</button>
+    <header>
+        <h1>Jake</h1>
+    </header>
+    
+    <div class="container">
+        <div class="content">
+            <div class="tab-content">
+                <!-- Tab 1: Home -->
+                <div id="tab1" class="tab-pane active">
+                    <h2>Home</h2>
+                    <img src="side-image.jpg" alt="Side Image" class="fixed-left-image">
+                    <div class="project">
+                        <h2><a href="https://lordmozart.github.io/Wallpaper/" target="_blank">Wallpaper</a></h2>
+                        <p>Simple wallpaper with particle effects</p>
+                    </div>
+                    <div class="project">
+                        <h2><a href="https://lordmozart.github.io/flappytorture/" target="_blank">Flappy bird</a></h2>
+                        <p>Flappy bird one liner by gullyn</p>
+                        <h2><a href="https://lordmozart.github.io/flappybird/" target="_blank">Flappy bird</a></h2>
+                        <p>Flappy bird script, entirely in html.</p>
+                    </div>
+                    <div class="project">
+                        <h2><a href="https://lordmozart.github.io/dance/" target="_blank">Dancing Banana</a></h2>
+                        <p>The banana knows all...</p>
+                    </div>
+                    <div class="project">
+                        <h2><a href="https://lordmozart.github.io/countdown/" target="_blank">Countdown clock</a></h2>
+                        <p>Original countdown script</p>
+                    </div>
+                </div>
+                <!-- Tab 2: Bonnie Pics -->
+                <div id="tab2" class="tab-pane">
+                    <h2>Bonnie Pics</h2>
+                    <div class="bonnie-pics">
+                        <img src="bonnie1.jpg" alt="Bonnie Pic 1">
+                        <img src="bonnie2.jpg" alt="Bonnie Pic 2">
+                        <img src="bonnie3.jpg" alt="Bonnie Pic 3">
+                        <img src="bonnie4.jpg" alt="Bonnie Pic 4">
+                        <img src="bonnie5.jpg" alt="Bonnie Pic 5">
+                    </div>
+                </div>
+                <!-- Tab 3: Info -->
+                <div id="tab3" class="tab-pane">
+                    <h2>Info</h2>
+                    <p>I'm a HORRIBLE innovative developer with a passion for creating (bad) interactive web experiences. Not that good at integrating multimedia elements and advanced visual effects to enhance user engagement. Never exploring new technologies and tools to push the boundaries of web development. Committed to delivering high-quality, user-centered solutions.</p>
+                    <img src="info-image.jpg" alt="Info Image" class="info-image">
+                </div>
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            <nav>
+                <a href="#tab1" class="tab-link" data-tab="tab1">Home</a>
+                <a href="#tab2" class="tab-link" data-tab="tab2">Bonnie Pics</a>
+                <a href="#tab3" class="tab-link" data-tab="tab3">Info</a>
+            </nav>
+        </div>
     </div>
-    <div id="title">Flappy Bird</div>
-    <div id="score">Score: 0</div>
-    <div id="highScore">High Score: 0</div>
-    <canvas id="gameCanvas"></canvas>
-    <button id="mobileModeButton">Mobile Mode Off</button>
     <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        const startScreen = document.getElementById('startScreen');
-        const startButton = document.getElementById('startButton');
-        const scoreDisplay = document.getElementById('score');
-        const highScoreDisplay = document.getElementById('highScore');
-        const title = document.getElementById('title');
-        const mobileModeButton = document.getElementById('mobileModeButton');
-
-        let bird, pipes, frame, gameRunning, score;
-        let highScore = parseInt(localStorage.getItem('highScore')) || 0;
-        let isMobileMode = false;
-
-        // Game settings
-        const defaultGravity = 0.04;
-        const defaultPipeSpeed = 1.5;
-        const defaultPipeInterval = 240;
-        const defaultJumpStrength = -2.5;
-        let gravity = defaultGravity;
-        let pipeSpeed = defaultPipeSpeed;
-        let pipeInterval = defaultPipeInterval;
-        let jumpStrength = defaultJumpStrength;
-
-        function resizeCanvas() {
-            const height = window.innerHeight - 100; // Adjusting for score and mobile mode button
-            const width = window.innerWidth;
-            canvas.width = width;
-            canvas.height = height;
-        }
-
-        function resetGame() {
-            resizeCanvas(); // Adjust canvas size on reset
-            bird = {
-                x: 50,
-                y: canvas.height / 2,
-                width: 20,
-                height: 20,
-                gravity: gravity,
-                lift: jumpStrength,
-                velocity: 0,
-                hitboxWidth: 16, // 80% of bird width
-                hitboxHeight: 16 // 80% of bird height
-            };
-            pipes = [];
-            frame = 0;
-            score = 0;
-            updateScore();
-            updateHighScore();
-            gameRunning = false;
-            title.style.display = 'block'; // Show title when game is reset
-            updateGameSpeed();
-        }
-
-        function startGame() {
-            gameRunning = true;
-            startScreen.style.display = 'none';
-            title.style.display = 'none'; // Hide title during gameplay
-            gameLoop();
-        }
-
-        function drawBird() {
-            ctx.fillStyle = 'yellow';
-            ctx.fillRect(bird.x, bird.y, bird.width, bird.height);
-        }
-
-        function drawPipes() {
-            ctx.fillStyle = 'green';
-            pipes.forEach(pipe => {
-                ctx.fillRect(pipe.x, 0, pipeWidth, pipe.top);
-                ctx.fillRect(pipe.x, canvas.height - pipe.bottom, pipeWidth, pipe.bottom);
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            
+            function showTab(tabId) {
+                tabLinks.forEach(link => link.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+                
+                document.querySelector(`.tab-link[data-tab="${tabId}"]`).classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            }
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+                    showTab(tabId);
+                });
             });
-        }
-
-        function updateBird() {
-            bird.velocity += bird.gravity;
-            bird.y += bird.velocity;
-            if (bird.y + bird.height > canvas.height) bird.y = canvas.height - bird.height;
-            if (bird.y < 0) bird.y = 0;
-        }
-
-        const pipeWidth = 60;
-        const pipeGap = 120;
-
-        function updatePipes() {
-            if (frame % pipeInterval === 0) {
-                const top = Math.random() * (canvas.height - pipeGap - 50) + 25;
-                const bottom = canvas.height - top - pipeGap;
-                pipes.push({ x: canvas.width, top, bottom });
-            }
-            pipes.forEach(pipe => {
-                pipe.x -= pipeSpeed;
-            });
-            if (pipes[0] && pipes[0].x + pipeWidth < 0) {
-                pipes.shift();
-                score++;
-                updateScore();
-                if (score > highScore) {
-                    highScore = score;
-                    localStorage.setItem('highScore', highScore);
-                    updateHighScore();
-                }
-            }
-        }
-
-        function checkCollisions() {
-            pipes.forEach(pipe => {
-                if (bird.x < pipe.x + pipeWidth &&
-                    bird.x + bird.hitboxWidth > pipe.x &&
-                    (bird.y < pipe.top || bird.y + bird.hitboxHeight > canvas.height - pipe.bottom)) {
-                    if (score > highScore) {
-                        highScore = score;
-                        localStorage.setItem('highScore', highScore);
-                        updateHighScore();
-                    }
-                    alert('Game Over! Click OK to restart.');
-                    resetGame();
-                    startScreen.style.display = 'flex';
-                }
-            });
-        }
-
-        function updateScore() {
-            scoreDisplay.textContent = `Score: ${score}`;
-        }
-
-        function updateHighScore() {
-            highScoreDisplay.textContent = `High Score: ${highScore}`;
-        }
-
-        function updateGameSpeed() {
-            if (isMobileMode) {
-                pipeSpeed = defaultPipeSpeed * 2; // Double the pipe speed
-                pipeInterval = defaultPipeInterval / 2; // Double the pipe spawn rate
-                gravity = defaultGravity * 1.5; // Increase gravity
-                jumpStrength = defaultJumpStrength * 1.5; // Increase jump height
-                mobileModeButton.textContent = 'Mobile Mode On';
-            } else {
-                pipeSpeed = defaultPipeSpeed;
-                pipeInterval = defaultPipeInterval;
-                gravity = defaultGravity;
-                jumpStrength = defaultJumpStrength;
-                mobileModeButton.textContent = 'Mobile Mode Off';
-            }
-            bird.gravity = gravity;
-            bird.lift = jumpStrength;
-        }
-
-        function gameLoop() {
-            if (!gameRunning) return;
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawBird();
-            drawPipes();
-            updateBird();
-            updatePipes();
-            checkCollisions();
-            frame++;
-            requestAnimationFrame(gameLoop);
-        }
-
-        function jump() {
-            if (gameRunning) {
-                bird.velocity = bird.lift;
-            }
-        }
-
-        // Event listeners for keyboard, mouse, and touch inputs
-        document.addEventListener('keydown', (event) => {
-            if (event.code === 'Space') {
-                jump();
-            }
+            showTab('tab1'); // Show 'Home' tab by default
         });
-
-        document.addEventListener('click', () => {
-            if (gameRunning) {
-                jump();
-            }
-        });
-
-        canvas.addEventListener('touchstart', (event) => {
-            event.preventDefault();
-            if (gameRunning) {
-                jump();
-            }
-        });
-
-        startButton.addEventListener('click', () => {
-            resetGame();
-            startGame();
-        });
-
-        mobileModeButton.addEventListener('click', () => {
-            isMobileMode = !isMobileMode;
-            updateGameSpeed();
-        });
-
-        updateHighScore(); // Initialize high score display
-
-        resetGame(); // Initial game setup
     </script>
 </body>
 </html>
