@@ -15,8 +15,6 @@
             overflow: hidden;
             background-color: #121212; /* Dark background */
             color: #e0e0e0; /* Light grey text */
-            transform: scale(0.9); /* Zoom out by 10% */
-            transform-origin: top left; /* Ensure scaling starts from the top left */
         }
 
         body {
@@ -58,7 +56,21 @@
         .content {
             flex: 1;
             margin-right: 220px;
-            padding-left: 200px; /* Move content to the right by 200px */
+        }
+
+        .tab-content {
+            margin-top: 1em;
+        }
+
+        .tab-pane {
+            display: none;
+            padding-left: 200px; /* Move elements inside the home tab to the right by 200px */
+            transform: scale(0.9); /* Zoom out by 10% */
+            transform-origin: top left; /* Ensure scaling starts from the top left */
+        }
+
+        .tab-pane.active {
+            display: block;
         }
 
         .project {
@@ -126,19 +138,6 @@
         .sidebar nav a:hover,
         .sidebar nav a.active {
             background: #1e90ff;
-        }
-
-        .tab-content {
-            margin-top: 1em;
-        }
-
-        .tab-pane {
-            display: none;
-            padding-left: 200px; /* Move elements inside the home tab to the right by 200px */
-        }
-
-        .tab-pane.active {
-            display: block;
         }
 
         .bonnie-pics img {
