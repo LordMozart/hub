@@ -58,9 +58,7 @@
             padding: 1em;
             text-align: left;
             transition: transform 0.3s, box-shadow 0.3s;
-            float: left; /* Align projects to the left */
-            width: calc(33% - 100px); /* Make sure the width accounts for the 100px gap */
-            margin-right: 100px; /* Add 100px gap between projects */
+            margin-bottom: 100px; /* Add 100px gap between projects */
         }
 
         .project:hover {
@@ -132,23 +130,6 @@
             display: block;
         }
 
-        .bonnie-pics img {
-            width: 300px;
-            height: 300px;
-            margin: 5px;
-            border-radius: 8px;
-            object-fit: cover;
-            border: 2px solid #333;
-        }
-
-        .info-image {
-            width: 50%; /* Adjust the size of the image */
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 8px;
-            display: block; /* Ensure it appears on a new line */
-            margin: 1em auto; /* Center the image and add margin for spacing */
-        }
-
         /* Mobile Styles */
         @media (max-width: 768px) {
             .container {
@@ -171,15 +152,6 @@
                 position: relative;
                 height: auto;
                 box-shadow: none;
-            }
-
-            .bonnie-pics img {
-                width: 100%; /* Make images responsive */
-                height: auto;
-            }
-
-            .info-image {
-                width: 100%; /* Adjust the size of the image for mobile */
             }
         }
     </style>
@@ -211,25 +183,6 @@
                         <h2><a href="https://lordmozart.github.io/countdown/" target="_blank">Countdown clock</a></h2>
                         <p>Original countdown script</p>
                     </div>
-                </div>
-
-                <!-- Tab 2: Bonnie Pics -->
-                <div id="tab2" class="tab-pane">
-                    <h2>Bonnie Pics</h2>
-                    <div class="bonnie-pics">
-                        <img src="bonnie1.jpg" alt="Bonnie Pic 1">
-                        <img src="bonnie2.jpg" alt="Bonnie Pic 2">
-                        <img src="bonnie3.jpg" alt="Bonnie Pic 3">
-                        <img src="bonnie4.jpg" alt="Bonnie Pic 4">
-                        <img src="bonnie5.jpg" alt="Bonnie Pic 5">
-                    </div>
-                </div>
-
-                <!-- Tab 3: Info -->
-                <div id="tab3" class="tab-pane">
-                    <h2>Info</h2>
-                    <p>I'm a HORRIBLE innovative developer with a passion for creating (bad) interactive web experiences. Not that good at integrating multimedia elements and advanced visual effects to enhance user engagement. Never exploring new technologies and tools to push the boundaries of web development. Committed to delivering high-quality, user-centered solutions.</p>
-                    <img src="info-image.jpg" alt="Info Image" class="info-image">
                 </div>
             </div>
         </div>
