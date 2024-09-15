@@ -50,7 +50,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 2em;
-            position: relative; /* Needed for positioning of fixed image */
+            position: relative; /* Needed for positioning of absolute image */
         }
 
         .content {
@@ -166,14 +166,13 @@
         }
 
         .fixed-left-image {
-            position: fixed;
-            left: 10; /* Align to the left edge of the viewport */
+            position: absolute;
+            left: -10%; /* Adjust based on container width */
             top: 150px; /* Adjust based on where you want it relative to the header */
-            width: 150%; /* Resize image to 150% of its original size */
+            width: 50%; /* Resize image to 50% of its original size */
             height: auto;
             border-radius: 8px;
             background: transparent; /* Ensure no background */
-            transform: translateX(-50%); /* Move the image more to the left */
         }
     </style>
 </head>
