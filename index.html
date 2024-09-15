@@ -47,15 +47,15 @@
         .container {
             display: flex;
             flex: 1;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2em;
             position: relative; /* Needed for positioning of absolute image */
-            flex-direction: column;
         }
 
         .content {
-            margin-right: 0; /* Remove margin for mobile */
-            padding-right: 0; /* Remove padding for mobile */
+            flex: 1;
+            margin-right: 220px;
         }
 
         .project {
@@ -100,15 +100,6 @@
             z-index: 1100;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-            transition: transform 0.3s ease;
-        }
-
-        .sidebar.nav-open {
-            transform: translateX(0);
-        }
-
-        .sidebar.nav-closed {
-            transform: translateX(100%);
         }
 
         .sidebar nav {
@@ -193,29 +184,19 @@
 
         /* Mobile Styles */
         @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                position: relative;
-                height: auto;
-                box-shadow: none;
-                transform: translateX(100%);
-            }
-
-            .sidebar.nav-open {
-                transform: translateX(0);
-            }
-
-            .sidebar.nav-closed {
-                transform: translateX(100%);
-            }
-
             .container {
                 padding: 1em;
             }
 
             .content {
                 margin-right: 0; /* Remove margin for mobile */
-                padding-right: 0; /* Remove padding for mobile */
+            }
+
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+                box-shadow: none;
             }
 
             .bonnie-pics img {
@@ -276,7 +257,7 @@
             </div>
         </div>
         
-        <div class="sidebar nav-closed">
+        <div class="sidebar">
             <nav>
                 <a href="#tab1" class="tab-link" data-tab="tab1">Home</a>
                 <a href="#tab2" class="tab-link" data-tab="tab2">Bonnie Pics</a>
@@ -293,7 +274,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             const tabLinks = document.querySelectorAll('.tab-link');
             const tabPanes = document.querySelectorAll('.tab-pane');
-            const sidebar = document.querySelector('.sidebar');
             
             function showTab(tabId) {
                 tabLinks.forEach(link => link.classList.remove('active'));
@@ -312,19 +292,6 @@
             });
 
             showTab('tab1'); // Show 'Home' tab by default
-            
-            // Toggle sidebar on mobile
-            const toggleSidebar = () => {
-                if (sidebar.classList.contains('nav-closed')) {
-                    sidebar.classList.remove('nav-closed');
-                    sidebar.classList.add('nav-open');
-                } else {
-                    sidebar.classList.remove('nav-open');
-                    sidebar.classList.add('nav-closed');
-                }
-            };
-            
-            document.querySelector('.menu-toggle').addEventListener('click', toggleSidebar);
         });
     </script>
 </body>
