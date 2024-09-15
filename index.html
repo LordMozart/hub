@@ -50,6 +50,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 2em;
+            position: relative; /* Needed for positioning of fixed image */
         }
 
         .content {
@@ -164,6 +165,15 @@
             text-decoration: underline;
         }
 
+        .fixed-left-image {
+            position: fixed;
+            left: 10px;
+            top: 150px; /* Adjust based on where you want it relative to the header */
+            width: 150px; /* Adjust size as needed */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -178,6 +188,7 @@
                 <!-- Tab 1: Home -->
                 <div id="tab1" class="tab-pane active">
                     <h2>Home</h2>
+                    <img src="fixed-image.jpg" alt="Fixed Image" class="fixed-left-image">
                     <div class="project">
                         <h2><a href="https://lordmozart.github.io/Wallpaper/" target="_blank">Wallpaper</a></h2>
                         <p>Simple wallpaper with particle effects</p>
